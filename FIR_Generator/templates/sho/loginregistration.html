@@ -1,0 +1,50 @@
+
+{% extends 'footer.html' %}
+
+{% load static %}
+
+{% block nav_content %}
+
+<div style="justify-content: space-around;display: flex;">
+  <a class="btn btn-dark  ml-2" style=" height: 100%; " href="/"> Back </a>
+</div>
+
+{% endblock nav_content %}
+
+{% block body %}
+
+
+
+
+  <div class="container login" id="container">
+    
+    <div class="form-container sign-in-container">
+
+      <form action="{% url 'sho:shoLogin' %}" method="POST"> {% csrf_token %}
+        <h1>Sign in</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="social"><i class="fa fa-google"></i></a>
+          <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+        </div>
+        <span>or use your account</span>
+        <input type="email" placeholder="Email" name="email" />
+        <input type="password" placeholder="Password" name="password" />
+        <a href="#">Forgot your password?</a>
+        <button>Sign In</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        
+        <div class="overlay-panel overlay-right">
+          <h1>New SHO ?</h1>
+          <p>Contact Admin to register Yourself</p> 
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="{% static 'loginregister/loginregister.js' %}"></script>
+  {% endblock body %}

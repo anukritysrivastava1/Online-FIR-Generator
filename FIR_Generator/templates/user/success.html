@@ -1,0 +1,23 @@
+{% extends 'header.html' %}
+{% load static %}
+{% load humanize %}
+{% block navimg %}
+<img src="{% static 'user_avt.png' %}" alt="Person" width="96" height="96">
+{% endblock navimg %}
+
+{% block bodyStyle %} style="height: 100vh; margin-top:-30px" {% endblock bodyStyle %}
+{% block body %}
+
+
+<div class="container mt-5">
+    
+      <h4 class="alert-heading fm2">Success!</h4>
+      
+      <p>FIR application generated successfully. Go to the dasboard to download it.</p>
+      <hr />
+      <a href="/user/home" class="btn btn-success">Home </a>
+      <a href="/user/my/{{request.user}}" class="btn btn-success">My Dashboard</a>
+    </div>
+  </div>
+
+  {% endblock body %} 

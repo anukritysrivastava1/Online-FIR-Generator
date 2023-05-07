@@ -1,0 +1,111 @@
+{% extends 'header.html' %}
+{% load static %}
+{% load humanize %}
+{% block navimg %}
+<img src="{% static 'admin_avt.png' %}" alt="Person" width="96" height="96">
+{% endblock navimg %}
+
+{% block bodyStyle %} style="height: 100vh;justify-content: start" {% endblock bodyStyle %}
+{% block body %}
+
+<style>
+  .checkbox {
+    transform: scale(1.5);
+    margin-right: 10px;
+  }
+</style>
+
+<div class="container mt-5">
+    <a href="/controller/home" class="btn btn-primary"> HOME </a>
+  </div>
+  
+  <div class="container" >
+    <h1 style="text-align: center;" class="fm2">Search FIR's Between Dates</h1>
+    <br />
+    <center>
+    <form action="{% url 'user:searchFIR' %}" method="POST" > {% csrf_token %}
+      <div class="form-row" style="justify-content: start;">  
+        <div class="form-group col-md-6">
+          <label for="fromdate">From Date</label>
+          <input
+            type="date"
+            class="form-control mb-2 mr-sm-2"
+            id="fromdate"
+            name="date[from]"
+            required
+          />
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="todate">To Date</label>
+          <input
+            type="date"
+            class="form-control mb-2 mr-sm-2"
+            id="todate"
+            name="date[to]"
+            required
+          />
+        </div>
+      </div>
+      <input type="hidden" name="username" value="{{request.user}}">
+      <label class="m-1">
+        <input type="radio" name="status" value="All" class="checkbox">
+        All
+      </label>
+      <label class="m-1">
+        <input type="radio" name="status" value="pending" class="checkbox">
+        Pending
+      </label>
+    
+      <label class="m-1">
+        <input type="radio" name="status" value="approved" class="checkbox">
+        Approved
+      </label>
+    
+      <label class="m-1">
+        <input type="radio" name="status" value="solved" class="checkbox">
+        Solved
+      </label >
+      
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
+  </center>
+  </div>
+
+  <h1 class="text-center mb-2 fm2">Searched Results</h1>
+  <!-- style="display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); justify-items: center; align-items: center; gap: 20px;" -->
+  <div class="row text-center  row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 m-4">
+    {% for fir in userfir %}
+    <div class="col border border-dark border-1 rounded-3  shadow-lg p-3 mb-5 bg-body rounded">
+      <div class=" card shadow-lg ">
+        <div class="card-body">
+          <h5 class="card-title ">Application No. : <mark class="bg-danger">{{fir.sno}}</mark></h5>
+          <p class="card-text">Details: {{fir.typeofcrime}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Complaint Date: {{fir.timestamp | naturaltime}}</li>
+          <li class="list-group-item">Crime Date: {{fir.incidentdatetime}}</li>
+        </ul>
+        <div class="card-body">
+          {% if fir.solved %}
+          <span class="badge bg-success  fs-5  text-wrap">Marked Solved by SHO, {{fir.district}} </span>
+          {% elif fir.status %}
+
+
+          <span class="badge bg-success  fs-5  text-wrap">Digitally Verified by SHO</span>
+
+          {% else %}
+          <span class="badge bg-warning  fs-5 text-wrap">Pending</span>
+          {% endif %}
+          <hr>
+          <a href="/user/fir/{{fir.sno}}" class="btn btn-primary btn-block">View/Download Complaint</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% endblock body %}
+  

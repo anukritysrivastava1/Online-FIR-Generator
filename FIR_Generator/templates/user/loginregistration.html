@@ -1,0 +1,64 @@
+
+{% extends 'footer.html' %}
+
+{% load static %}
+<!-- {% block style %} 'loginregister/loginregister.css'{% endblock style %} -->
+{% block nav_content %}
+
+<div style="justify-content: space-around;display: flex;">
+  <a class="btn btn-dark  ml-2" style=" height: 100%; " href="/"> Back </a>
+</div>
+{% endblock nav_content %}
+{% block body %}
+
+  <div class="container login " id="container">
+    <div class="form-container sign-up-container">
+
+      <form action="{% url 'user:userRegister' %}" method="POST"> {% csrf_token %}
+        <h1>Create Account</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="social"><i class="fa fa-google"></i></a>
+          <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+        </div>
+        <span>or use your email for registration</span>
+        <input type="email" placeholder="Email" name="email" />
+        <input type="text" placeholder="UserName" name="username" />
+        <input type="password" placeholder="Password" name="password" />
+        <button>Sign Up</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+
+      <form action="{% url 'user:userLogin' %}" method="POST"> {% csrf_token %}
+        <h1>Sign in</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="social"><i class="fa fa-google"></i></a>
+          <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+        </div>
+        <span>or use your account</span>
+        <input type="email" placeholder="Email" name="email" />
+        <input type="password" placeholder="Password" name="password" />
+        <a href="#">Forgot your password?</a>
+        <button>Sign In</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>Login here with your personal info</p>
+          <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>New User?</h1>
+          <p>Enter your personal details to get signed up</p>
+          <button class="ghost" id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="{% static 'loginregister/loginregister.js' %}"></script>
+  {% endblock body %}

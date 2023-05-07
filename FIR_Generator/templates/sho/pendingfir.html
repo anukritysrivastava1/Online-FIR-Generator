@@ -1,0 +1,51 @@
+{% extends 'header.html' %}
+{% load static %}
+{% load humanize %}
+{% block navimg %}
+<img src="{% static 'sho_avt.png' %}" alt="Person" width="96" height="96">
+{% endblock navimg %}
+
+{% block bodyStyle %} style="height: {{style}}vh;  overflow-x: hidden;" {% endblock bodyStyle %}
+{% block body %}
+
+
+<br><br>
+<div class="container mt-5">
+    <a href="/sho/home/{{request.user}}" class="btn btn-primary"> HOME </a>
+  </div>
+  
+  <h1 class="text-center fm2 ">{{report}} FIR Reports</h1>
+  
+  <div class="row text-center justify-content-center" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); justify-items: center; align-items: center; gap: 20px;">
+    {% for fir in pendingfir %}
+    <div class="card shadow-lg  mb-5 bg-body rounded" style="width: 18rem;">
+      <div class="card-body shadow-lg my-2">
+        <h5 class="card-title fm2">Application No. : <span class="bg-danger">{{fir.sno}}</span></h5>
+        <p class="card-text">Details: {{fir.typeofcrime}}</p>
+      <hr>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Complaint Date: {{fir.timestamp | naturaltime}}</li>
+        <li class="list-group-item">Crime Date: {{fir.incidentdatetime}}</li>
+      </ul>
+      <div class="card-body">
+          {% if fir.solved %}
+          <h3><span class="badge bg-success" >Solved</span></h3>
+        {% elif fir.status %}
+        <h3><span class="badge bg-info" >Approved</span></h3>
+        
+        {% else %}
+        <h3><span class="badge bg-warning" >Pending</span></h3>
+
+        {% endif %}
+        
+        <a href="/sho/fir/{{fir.sno}}" class="btn btn-primary btn-block">View/Download Complaint</a>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+
+  {% endblock body %}
+
+  

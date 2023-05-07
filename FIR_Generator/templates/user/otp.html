@@ -1,0 +1,57 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block navimg %}
+<img src="{% static 'user_avt.png' %}" alt="Person" width="96" height="96">
+{% endblock navimg %}
+{% block bodyStyle %}style="height: 100vh;margin-top:-20px"{% endblock bodyStyle %}
+{% block body %}
+
+<div class="container ">
+
+  <a href="/user/home" class="btn btn-primary"><< HOME!</a>
+    <a href="/user/apply" class="btn btn-danger"><< Cancel FIR!</a>
+   
+  </div>
+
+<div class="container " id="otp">
+
+    <h1 class="fm2" style="text-align: center;">OTP Verification for FIR</h1>
+    <h5>
+      A message has been sent to your registered mobile number. Type the code to
+      confirm your identity. Remember to fill it correctly else you will need to
+      fill the form again. (Currently it is set to: 12345678)
+    </h5>
+    <form class="form-inline " action="{% url 'user:verifyotp' %}" method="POST"> {% csrf_token %}
+      <div class="form-group mb-2 justify-content-center">
+        <label for="inputPassword2" class="sr-only">Password</label>
+        <input
+          type="text"
+          class="form-control"
+          id="otp"
+          placeholder="OTP"
+          name="otp"
+          required
+        />
+        
+      </div>
+      <input type="hidden" name="username"  value="{{username}}">
+      <input type="hidden" name="useremail"  value="{{useremail}}">
+      <input type="hidden" name="email"  value="{{email}}">
+      <input type="hidden" name="fullName"  value="{{fullName}}">
+      <input type="hidden" name="mobNo"  value="{{mobNo}}">
+      <input type="hidden" name="aadhar"  value="{{aadhar}}">
+      <input type="hidden" name="address"  value="{{address}}">
+      <input type="hidden" name="district"  value="{{district}}">
+      <input type="hidden" name="state"  value="{{state}}">
+      <input type="hidden" name="pinCode"  value="{{pinCode}}">
+      <input type="hidden" name="toc"  value="{{toc}}">
+      <input type="hidden" name="incidentDateTime"  value="{{incidentDateTime}}">
+      <input type="hidden" name="detailsOfIncident"  value="{{detailsOfIncident}}">
+      <input type="hidden" name="suspect"  value="{{suspect}}">
+      <input type="hidden" name="witness"  value="{{witness}}">
+      <button type="submit" class="btn btn-primary ">Confirm identity</button>
+    </form>
+  </div>
+  <br>
+
+  {% endblock body %}

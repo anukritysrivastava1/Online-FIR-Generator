@@ -1,0 +1,55 @@
+{% extends 'header.html' %}
+{% load static %}
+{% load humanize %}
+{% block navimg %}
+<img src="{% static 'admin_avt.png' %}" alt="Person" width="96" height="96">
+{% endblock navimg %}
+{% block bodyStyle %} style="height: 100vh; overflow-x: hidden;justify-content: start" {% endblock bodyStyle %}
+{% block body %}
+
+<br>
+<div class="container">
+  <a href="/controller/home" class="btn btn-primary">
+     HOME!</a>  
+     
+  <a href="/controller/createsho" class="btn btn-primary" style="float: right;">
+    Create New SHO Account</a>
+</div>
+
+<center><h2 class="fm2"> SHO Account Details</h2></center>
+<div class="m-2">
+
+    <div style="height: 350px; overflow: auto;" id="" class="border border-danger border-3 p-2">
+        <div class="d-grid">
+            <a class="btn btn-danger"  >
+                <div class="row ">
+                    <div class="col">UserName
+                    </div>
+                    <div class="col">SHO Address</div>
+                    <div class="col">SHO Pincode</div>
+                </div>
+            </a>
+        </div>
+        {% for sho in user %}
+        
+        <div class="d-grid">
+            <a class="btn btn-outline-dark" href="/controller/viewSHO/{{sho.username}}" >
+                <div class="row ">
+                    <div class="col">{{ sho.username }}
+                    </div>
+                    <div class="col">{{sho.first_name}}</div>
+                    <div class="col">{{sho.last_name}}</div>
+                </div>
+            </a>
+        </div>
+     
+
+        {% endfor %}
+    </div>
+
+    
+
+   
+</div>
+
+{% endblock body %}

@@ -1,0 +1,75 @@
+
+
+{% extends 'footer.html' %}
+{% block bodyStyle %}style="height: 100vh;"{% endblock bodyStyle %}
+{% block body %}
+
+<style>
+  body {
+    background: radial-gradient(
+        farthest-side at top left,
+        rgba(243, 89, 18, 0.76),
+        transparent
+      ),
+      radial-gradient(
+        farthest-side at bottom right,
+        rgba(105, 252, 91, 0.76),
+        transparent
+      );
+    display: flex;
+    justify-content: center;
+     align-items: center; 
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    height: 95vh;
+    margin: -20px 0 50px;
+    
+  }
+  .text2{
+    font-size: 75px;
+    font-weight: 600;
+    margin-left: -3px;
+}
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+}
+}
+</style>
+
+    <div class="text2 glow">Who You Are?</div> <br>
+    <div class="button-container" style="display: flex; justify-content: space-between; ">
+      <form action="{% url 'user:userLoginregister' %}" method="get" style="background: transparent;">
+        <button type="submit" class="btn btn-outline-dark btn-lg user">USER</button>
+      </form> 
+      <div style="width: 20px; "></div>
+      <form action="{% url 'sho:shoLoginregister' %}" method="get" style="background: transparent;">
+        <button type="submit" class="btn btn-outline-success btn-lg sho">SHO</button>
+      </form>
+      <div style="width: 20px; "></div>
+      <form action="controller" method="get" style="background: transparent;">
+        <button type="submit" class="btn btn-outline-danger btn-lg admin">ADMIN</button>
+      </form>
+    </div>
+
+   
+      
+
+
+{% endblock body %}
+
+
+
+

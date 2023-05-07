@@ -1,0 +1,36 @@
+{% extends 'header.html' %}
+{% load static %}
+{% load humanize %}
+{% block navimg %}
+<img src="{% static 'user_avt.png' %}" alt="Person" width="96" height="96">
+{% endblock navimg %}
+{% block bodyStyle %} style="height: 100vh;" {% endblock bodyStyle %}
+{% block body %}
+
+
+
+<div class="container">
+   
+    <div class="container">
+      <a href="/user/home" class="btn btn-primary"> HOME </a>
+    </div>
+    <h1 style="text-align: center;" class="fm2">CANCEL FORM</h1>
+    <div style="width: 60%; margin: 30px auto;">
+      <h3>
+        If you want to cancel the FIR, you must understand that the Police cannot
+        take back an FIR, it can be done only in the courts. You must appear in
+        the court and express your intention to compound the offence, either to
+        the judge or to the lawyer of opposing party or to the court officials who
+        are present.
+      </h3>
+      <a
+        class="btn btn-info btn-lg btn-block mt-5"
+        style="text-align: center;"
+        href="https://www.quora.com/How-do-I-cancel-an-FIR-and-do-I-have-to-pay-for-its-cancellation-If-so-then-to-whom-the-police-or-the-court"
+      >
+        LEARN MORE
+      </a>
+    </div>
+  </div>
+  {% endblock body %}
+

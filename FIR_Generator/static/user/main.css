@@ -1,0 +1,144 @@
+.thumbnail img {
+    width: 100%;
+  }
+  .thumbnail {
+    padding: 0;
+  }
+
+  /* spin fir logo */
+
+  .spin-image {
+    animation: spin 2s infinite linear;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .caption-full {
+    padding: 9px;
+  }
+  .form-inline a {
+    color: rgb(255, 115, 0);
+  }
+  .vl {
+    border-left: 2px solid rgb(49, 44, 44);
+    height: 4em;
+    margin-top: 0.5em;
+  }
+  .head {
+    justify-content: center;
+    padding-top: 0.5rem;
+  }
+  .sec-nav {
+    justify-content: space-around;
+  }
+  .sec-nav a {
+    color: rgb(0, 0, 0);
+  }
+  .fm {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    font-weight: 900;
+    color: black;
+    align-items: center;
+  }
+  .fm2 {
+    font-weight: 900;
+    color: black;
+    align-items: center;
+  }
+  
+  .fm2:hover {
+    text-shadow: 2px 2px #FF0000;
+    text-decoration: underline;
+  }
+ 
+
+
+  body {
+    background: radial-gradient(
+        farthest-side at top left,
+        rgba(243, 89, 18, 0.76),
+        transparent
+      ),
+      radial-gradient(
+        farthest-side at bottom right,
+        rgba(105, 252, 91, 0.76),
+        transparent
+      );
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    /* height: 100vh; */
+    /* margin: -20px 0 50px; */
+  }
+  
+  /* Chrome, Safari, Edge */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* dropdown content in navbar */
+
+
+
+/* username chip added  */
+.chip {
+  /* display: inline-block; */
+  padding: 0 25px;
+  float: right; 
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+}
+
+.chip img {
+  float: left;
+  margin: 0 10px 0 -25px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+
+  footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999; 
+  }
+  
+  footer p {
+    margin: 10px 0;
+  }
+  
+  footer i {
+    color: red;
+  }
+  
+  footer a {
+    color: #3c97bf;
+    text-decoration: none;
+  }
+  
